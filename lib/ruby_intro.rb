@@ -8,12 +8,8 @@ end
 
 def max_2_sum arr
   nums = []
-  if arr.length == 1
-    nums = arr
-  end
-  if arr.length >= 2
-    nums = arr.max(2)
-  end
+  nums = arr if arr.length == 1
+  nums = arr.max(2) if arr.length >= 2
   nums.inject(0, :+)
 end
 
@@ -22,9 +18,7 @@ def sum_to_n? arr, n
     return false
   else
     arr.each do |i|
-      if arr.include?(n - i) && i * 2 != n
-        return true
-      end
+      return true if arr.include?(n - i) && i * 2 != n
     end
     return false 
   end
@@ -39,9 +33,9 @@ end
 def starts_with_consonant? s
   if s.empty?
     return false 
-  elsif s =~ /^[^a-zA-Z].*/
+  elsif s =~ /^[^a-zA-Z]/
     return false
-  elsif s =~ /^[aeiouAEIOU].*/
+  elsif s =~ /^[aeiouAEIOU]/
     return false 
   else 
     return true
