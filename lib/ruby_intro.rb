@@ -18,7 +18,9 @@ def sum_to_n? arr, n
     return false
   else
     arr.each do |i|
-      return true if arr.include?(n - i) && i * 2 != n
+      arr1 = arr.compact
+      arr1.delete_at(arr1.index(i))
+      return true if arr1.include?(n - i)
     end
     return false 
   end
